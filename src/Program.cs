@@ -1,4 +1,3 @@
-using MyProxy;
 using System.Text;
 using System.Text.Json;
 using Yarp.ReverseProxy.Configuration;
@@ -44,7 +43,7 @@ var clusters = new[]
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddReverseProxy()
-    .LoadFromMemory(routes, clusters)
+    .LoadFromMemory(routes: routes, clusters: clusters)    
     .AddTransforms<MyTransform>();
 
 var app = builder.Build();
